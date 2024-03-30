@@ -3,6 +3,8 @@ import "@/styles/globals.css";
 import Nav from "@/components/Nav";
 import Provider from "@/components/Provider";
 import Footer from "@/components/footer/Footer";
+import Script from 'next/script'
+
 
 export const metadata = {
   title: "AGRIFARM",
@@ -11,6 +13,7 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
   return (
+    <>
     <html lang="en">
       <body>
         <Provider>
@@ -24,6 +27,9 @@ const RootLayout = ({ children }) => {
         </Provider>
       </body>
     </html>
+    <Script src="https://checkout.razorpay.com/v1/checkout.js"
+    />
+    </>
   );
 };
 

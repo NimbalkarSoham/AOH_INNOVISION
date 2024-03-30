@@ -12,16 +12,19 @@
     "axios": "^1.6.8",
     "bcrypt": "^5.1.1",
     "cloudinary": "^2.1.0",
+    "crypto": "^1.0.1",
     "firebase": "^10.10.0",
     "mongodb": "^6.5.0",
     "mongoose": "^8.2.4",
     "next": "14.1.4",
     "next-auth": "^4.24.7",
+    "razorpay": "^2.9.2",
     "react": "^18",
     "react-dom": "^18",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.22.3",
-    "react-sticky-el": "^2.1.0"
+    "react-sticky-el": "^2.1.0",
+    "shortid": "^2.2.16"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
