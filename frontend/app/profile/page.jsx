@@ -3,7 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import ProfileFeed from "@components/ProfileFeed";
+import ProfileFeed from "@/components/ProfileFeed";
 
 const MyProfile = () => {
   const router = useRouter();

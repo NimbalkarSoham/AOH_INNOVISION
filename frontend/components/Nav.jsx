@@ -21,7 +21,7 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="flex-between w-full mb-16 pt-3 px-4">
+    <nav className="flex-between w-full mb-4 pt-3 px-4">
       <Link href="/" className="flex gap-2 flex-center">
         <Image
           src={"/logo.png"}
@@ -72,7 +72,7 @@ const Nav = () => {
               <MultilingualSelector />
             </div>
 
-            <div className="flex gap-5">
+            <div className="flex gap-5 items-center">
               <button type="button" onClick={signOut} className="outline_btn">
                 Sign Out
               </button>

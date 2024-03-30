@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import { Router } from "next/router";
 import { useRouter } from "next/navigation";
 
-import Form from "@components/Form";
+import Form from "@/components/Form";
 
 const CreateProduct = () => {
   const router = useRouter();
@@ -22,7 +22,7 @@ const CreateProduct = () => {
     const user = await response.json();
     setUserData(user);
     // console.log(userData); // This won't work as expected due to asynchronous nature
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem("user", JSON.stringify(user));
   };
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const CreateProduct = () => {
   const createProduct = async (e) => {
     debugger;
     e.preventDefault();
-    
+
     setSubmitting(true);
     const form = e.currentTarget;
     const fileInput = Array.from(form.elements).find(
@@ -98,20 +98,23 @@ const CreateProduct = () => {
       setSubmitting(false);
     }
   };
-  
+
   return (
-    <>{userData.isVerified == "verified"?(<Form
-        type="Create"
-        post={post}
-        setPost={setPost}
-        submitting={submitting}
-        handleSubmit={createProduct}
-        handleImageChange={handleImageChange}/>):(<h4>account is under verification!</h4>)}
-    
-  
+    <>
+      {userData.isVerified == "verified" ? (
+        <Form
+          type="Create"
+          post={post}
+          setPost={setPost}
+          submitting={submitting}
+          handleSubmit={createProduct}
+          handleImageChange={handleImageChange}
+        />
+      ) : (
+        <h4>account is under verification!</h4>
+      )}
     </>
-    
   );
 };
 
-export default CreateProduct;
+export default CreateProduct;

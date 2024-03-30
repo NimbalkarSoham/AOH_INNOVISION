@@ -61,7 +61,7 @@ const Feed = () => {
   };
 
   return (
-    <div className="mt-16 mx-5">
+    <div className="mt-16 mx-5 px-5 w-full">
       <form className="relative w-full flex-center">
         <input
           type="text"
