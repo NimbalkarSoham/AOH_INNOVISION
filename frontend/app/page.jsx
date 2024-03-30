@@ -7,7 +7,12 @@ import { useSession } from "next-auth/react";
 import AdminPage from "@/components/AdminPage";
 import KycForm from "@/components/KycForm";
 import Link from "next/link";
-
+import Banner from "@/components/home/Banner/Banner";
+import Support from "@/components/home/support/Support";
+import Workflow from "@/components/home/workflow/Workflow";
+import Services from "@/components/home/services/Services";
+import Stats from "@/components/home/stats/Stats";
+import Equipments from "@/components/home/equipments/Equipments";
 const LandingPage = () => {
   const { data: session } = useSession();
   const [userData, setUserData] = useState({});
@@ -67,10 +72,21 @@ const LandingPage = () => {
           <Image src={"/Hero.png"} width={500} height={500} />
         </div>
       </div>
+      <br />
+      <br />
 
-      <div id="feed">
+      <div style={{ overflow: "hidden" }}>
+        <Banner />
+        <Support />
+        <Workflow />
+        <div id="feed" className="flex justify-center">
         <Feed />
       </div>
+      <Services />
+      {/* <Stats /> */}
+      <Equipments />
+      </div>
+      
     </section>
   );
 };

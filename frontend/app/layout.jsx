@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 
 import Nav from "@/components/Nav";
 import Provider from "@/components/Provider";
+import Footer from "@/components/footer/Footer";
 
 export const metadata = {
   title: "AGRIFARM",
@@ -16,12 +17,7 @@ const RootLayout = ({ children }) => {
           <main className="app">
             <Nav />
             {children}
-            <footer className="mt-96 green1  text-white width-[100] p-4 text-center text-xl">
-              <p>Contact Us:</p>
-              <p>Email: agrifarm@example.com</p>
-              <p>Phone: (123) 456-7890</p>
-              <p>Address: 123 Main St, City, Country</p>
-            </footer>
+            <Footer/>
           </main>
         </Provider>
       </body>
