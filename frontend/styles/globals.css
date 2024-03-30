@@ -1,0 +1,258 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+.product-card {
+  margin: auto;
+  width: 70%;
+  padding: 10px;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
+}
+.product-image {
+  width: 100%;
+  height: 100%;
+  max-width: 300px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.product-info {
+  padding: 10px;
+}
+
+.product-details {
+  overflow: hidden;
+  margin-bottom: 10px;
+  display: inline;
+  align-items: right;
+}
+
+.product-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.product-details li {
+  margin-bottom: 5px;
+}
+
+.product-actions {
+  text-align: center;
+  display: flex;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: row;
+}
+
+.product-image {
+  flex: 1;
+}
+
+.product-info {
+  flex: 2;
+}
+
+/* close Button X button CSS */
+.close-button {
+  padding: 5px 10px;
+  background-color: gray;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.close-button:hover {
+  background-color: red;
+}
+
+/* FORM Component CSS */
+
+.form-card {
+  margin: auto;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative; /* To position the close button */
+}
+
+/* Section */
+.w-full.max-w-full.flex-start.flex-col {
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+/* Title */
+.h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Form */
+form {
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Label */
+label {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Input */
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Textarea */
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Submit button */
+button {
+  background-color: #f37a12;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Cancel link */
+.text-gray-500.text-sm {
+  text-decoration: none;
+  color: #777;
+  cursor: pointer;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.green1 {
+  background-image: linear-gradient(to right, #48b760, #6bb748);
+}
+.text-green1 {
+  color: linear-gradient(to right, #48b760, #6bb748);
+}
+
+/* Tailwind Styles */
+
+/* Nav */
+
+.dropdown {
+  @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end;
+}
+
+.dropdown_link {
+  @apply text-sm text-gray-700 hover:text-gray-500 font-medium;
+}
+
+.flex-center {
+  @apply flex justify-center items-center;
+}
+
+.flex-start {
+  @apply flex justify-start items-start;
+}
+
+.flex-end {
+  @apply flex justify-end items-center;
+}
+
+.flex-even {
+  @apply flex justify-evenly items-center;
+}
+
+.flex-between {
+  @apply flex justify-between items-center;
+}
+
+.outline_btn {
+  @apply rounded-full w-28 h-12 green1 py-1.5 px-5 text-white transition-all hover:bg-white font-bold font-sans text-center text-sm flex items-center justify-center;
+}
+
+.form_input {
+}
+
+.form_textarea {
+}
+
+/* Hero */
+.head_text {
+  @apply mt-5 ml-5 text-9xl font-extrabold leading-[1.15] text-green-600 sm:text-9xl;
+}
+
+.orange_gradient {
+  @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
+}
+
+.custom_farm_style {
+  @apply mt-5 text-9xl font-extrabold leading-[1.15] text-black sm:text-7xl;
+}
+
+.message1 {
+  @apply mt-5 ml-5 text-base text-gray-600;
+}
+
+.message2 {
+  @apply mt-2 ml-5 text-base text-gray-950;
+}
+
+.explore_btn {
+  @apply mt-4 ml-5 rounded-full w-40 h-12 green1 py-1.5 px-5 text-white transition-all hover:bg-white font-bold font-sans text-center text-sm flex items-center justify-center;
+}
+
+.img_1 {
+}
+
+/* FEED */
+
+.prompt_layout {
+  @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-4 xl:gap-16;
+}
+
+.product-image {
+  @apply rounded-md;
+}
+
+/* PostCard */
+.post_card {
+  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full;
+}
+
+.flex-center {
+  @apply flex justify-center items-center;
+}
+
+.flex-start {
+  @apply flex justify-start items-start;
+}
+
+.flex-end {
+  @apply flex justify-end items-center;
+}
+
+.flex-between {
+  @apply flex justify-between items-center;
+}
+
+.search_input {
+  @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
+}
