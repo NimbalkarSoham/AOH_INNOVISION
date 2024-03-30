@@ -1,12 +1,18 @@
 import pandas as pd
 import pickle
 
+def predict_price(data):
+    pickel_path = "C:/Users/daras/price_predict_agrifarm.pkl"
 
-with open('price_predict_agrifarm.pkl', 'rb') as f:
-    model = pickle.load(f)
+    with open(pickel_path, 'rb') as f:
+        model = pickle.load(f)
 
-def predict_price(age_of_machine, fuel_consumption, rental_duration, equipment_type, equipment_name):
-    # Create DataFrame with input data
+    age_of_machine = int(data.get('age_of_machine', 0))
+    fuel_consumption = float(data.get('fuel_consumption', 0))
+    rental_duration = int(data.get('rental_duration', 0))
+    equipment_type = data.get('equipment_type', '')
+    equipment_name = data.get('equipment_name', '')
+
     input_data = pd.DataFrame({
         'Age_of_Machine': [age_of_machine],
         'Fuel_Consumption': [fuel_consumption],
@@ -23,12 +29,8 @@ def predict_price(age_of_machine, fuel_consumption, rental_duration, equipment_t
         'Equipment_Name_Model E': [0]
     })
 
-    # Map selected equipment type and name to 1
     input_data['Equipment_Type_' + equipment_type] = 1
     input_data['Equipment_Name_' + equipment_name] = 1
-
-    # Make prediction
     predicted_price = model.predict(input_data)
 
     return predicted_price[0]
-
