@@ -1,10 +1,12 @@
 import pandas as pd
+import os
 import pickle
 
 def predict_price(data):
-    pickel_path = "C:/Users/daras/price_predict_agrifarm.pkl"
+    models_folder = os.path.join(os.path.dirname(__file__), '../models')
+    pickle_file_path = os.path.join(models_folder, 'price_predict_agrifarm.pkl')
 
-    with open(pickel_path, 'rb') as f:
+    with open(pickle_file_path, 'rb') as f:
         model = pickle.load(f)
 
     age_of_machine = int(data.get('age_of_machine', 0))
