@@ -18,7 +18,6 @@ const RentalPricePredictor = () => {
       equipment_name: equipmentName,
     };
     try {
-      debugger;
       const response = await fetch("http://localhost:5000/price", {
         method: "POST",
         headers: {

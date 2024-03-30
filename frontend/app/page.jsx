@@ -46,47 +46,17 @@ const LandingPage = () => {
       ) : (
         <></>
       )}
-      <div className="flex flex-row  justify-between ">
-        <div className="col1">
-          <div className="flex items-start">
-            {" "}
-            {/* Changed from items-center */}
-            <h1 className="head_text text-center">
-              <span className="text-green1">AGRI</span>
-              <span className="custom_farm_style">FARM</span>
-            </h1>
-          </div>
-          <p className="message1">
-            Empowering farmers with Morden Ecommerce Solution
-          </p>
-          <p className="message2">
-            Explore, Transact and Thrive in Agriculture:Discover Quality
-            <br />
-            tools, Accurate Prediction and Growing Community.
-          </p>
-          <Link type="button" href="/#feed" className="explore_btn">
-            Explore Now!
-          </Link>
-        </div>
-        <div className="col2 mx-10">
-          <Image src={"/Hero.png"} width={500} height={500} />
-        </div>
-      </div>
-      <br />
-      <br />
 
-      <div style={{ overflow: "hidden" }}>
+      <div className="flex flex-col items-center">
         <Banner />
         <Support />
         <Workflow />
-        <div id="feed" className="flex justify-center">
-        <Feed />
+        <div id="feed" className="flex justify-center w-full">
+          <Feed />
+        </div>
+        <Services />
+        <Equipments />
       </div>
-      <Services />
-      {/* <Stats /> */}
-      <Equipments />
-      </div>
-      
     </section>
   );
 };

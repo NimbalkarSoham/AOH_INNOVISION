@@ -4,7 +4,6 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { checkout } from "@lib/checkout";
 import Link from "next/link";
 // import '@app/product-details/product.css'
 
@@ -15,8 +14,6 @@ const page = ({ params }) => {
   const [myOrder, setMyOrder] = useState([]);
   const [Owner, setOwner] = useState(null);
 
-  
-
   useEffect(() => {
     const fetchOrder = async () => {
       //debugger;
@@ -26,14 +23,14 @@ const page = ({ params }) => {
 
       const data = await response.json();
 
-      const ownerReq = await fetch(`/api/users/${data.creator}`,{
-        method: 'GET',
+      const ownerReq = await fetch(`/api/users/${data.creator}`, {
+        method: "GET",
       });
 
       const owner = await ownerReq.json();
 
       setOwner(owner.name);
-      console.log(owner)
+      console.log(owner);
 
       setMyOrder(data);
       //console.log(myOrder);
@@ -41,8 +38,6 @@ const page = ({ params }) => {
 
     if (params.id) fetchOrder();
   }, [params.id]);
-
-
 
   const handleGoBack = () => {
     window.history.back(); // This will go back to the previous page
@@ -53,9 +48,9 @@ const page = ({ params }) => {
     try {
       console.log(params.id);
       const price = document.getElementById("price_string").value;
-      if(price==""){
-        alert("Enter price string YZ")
-      } else{
+      if (price == "") {
+        alert("Enter price string YZ");
+      } else {
         const response = await fetch(`/api/product/${params.id}`, {
           method: "PATCH",
           body: JSON.stringify({
@@ -67,7 +62,6 @@ const page = ({ params }) => {
           router.push("/");
         }
       }
-      
     } catch (error) {
       console.log(error);
     }
@@ -84,8 +78,8 @@ const page = ({ params }) => {
           status: "soldOut!",
         }),
       });
-      
-      console.log('Product status updated successfully');
+
+      console.log("Product status updated successfully");
 
       const response = await fetch(`/api/order/new`, {
         method: "POST",
@@ -97,14 +91,8 @@ const page = ({ params }) => {
           rate: myOrder.price,
         }),
       });
-
-      if (response.ok) {
-        await checkout({
-          lineItems: [{ price: myOrder.brand, quantity: 1 }],
-        });
-      }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
@@ -135,7 +123,8 @@ const page = ({ params }) => {
           <div className="product-details">
             <ul>
               <li>
-                <strong>Owner:</strong> <Link href={`/profile/${myOrder.creator}`}>{Owner}</Link>
+                <strong>Owner:</strong>{" "}
+                <Link href={`/profile/${myOrder.creator}`}>{Owner}</Link>
               </li>
               <li>
                 <strong>Rate:</strong> {myOrder.price || ""}/Day
@@ -192,8 +181,6 @@ const page = ({ params }) => {
           </div>
         </div>
       </div>
-
-
     </div>
   );
 };
