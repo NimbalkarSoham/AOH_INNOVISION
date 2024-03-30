@@ -27,7 +27,7 @@ export const POST = async (req) => {
         const newOrder = new Order({
             // creator: customer,
             owner,
-            customer: customer_mid._id,
+            customer: customer,
             product,
             status: 'OPEN',
             shippingAddress,

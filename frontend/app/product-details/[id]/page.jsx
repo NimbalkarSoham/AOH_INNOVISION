@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import React from "react";
 import Link from "next/link";
+import BuyProduct from "@/components/razorpay/BuyProduct";
 // import '@app/product-details/product.css'
 
 const page = ({ params }) => {
@@ -13,6 +14,9 @@ const page = ({ params }) => {
 
   const [myOrder, setMyOrder] = useState([]);
   const [Owner, setOwner] = useState(null);
+  const [address, setAddress] = useState(null);
+
+  
 
   useEffect(() => {
     const fetchOrder = async () => {
@@ -70,7 +74,6 @@ const page = ({ params }) => {
   const handleCheckout = async () => {
     debugger;
     console.log(myOrder.brand);
-    const shipping_address = document.getElementById("shipping_address").value;
     try {
       await fetch(`/api/product/${params.id}`, {
         method: "PUT",
@@ -155,6 +158,7 @@ const page = ({ params }) => {
                     type="text"
                     name="shipping_address"
                     id="shipping_address"
+                    onChange={(e) => setAddress(e.target.value)}
                   />
                 </>
               )}
@@ -170,13 +174,7 @@ const page = ({ params }) => {
                 Verify
               </button>
             ) : (
-              <button
-                id="buy-btn"
-                onClick={handleCheckout}
-                className="btn explore_btn"
-              >
-                Proceed to pay
-              </button>
+              <BuyProduct product_id={params.id} shipping_address={address}/>
             )}
           </div>
         </div>
