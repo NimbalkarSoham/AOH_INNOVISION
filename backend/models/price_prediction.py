@@ -1,26 +1,12 @@
-from flask import Flask, request, jsonify
-import os
 import pandas as pd
 import pickle
 
-app = Flask(__name__)
-app = Flask(__name__, static_url_path='/static')
 
-pickel_path="C:/Users/daras/price_predict_agrifarm.pkl"
-
-
-with open(pickel_path, 'rb') as f:
+with open('price_predict_agrifarm.pkl', 'rb') as f:
     model = pickle.load(f)
-# rout for price prediction
-@app.route('/price', methods=['GET'])
-def predict_price():
-    data = request.json
-    age_of_machine = int(data.get('age_of_machine', 0))
-    fuel_consumption = float(data.get('fuel_consumption', 0))
-    rental_duration = int(data.get('rental_duration', 0))
-    equipment_type = data.get('equipment_type', '')
-    equipment_name = data.get('equipment_name', '')
 
+def predict_price(age_of_machine, fuel_consumption, rental_duration, equipment_type, equipment_name):
+    # Create DataFrame with input data
     input_data = pd.DataFrame({
         'Age_of_Machine': [age_of_machine],
         'Fuel_Consumption': [fuel_consumption],
@@ -37,11 +23,12 @@ def predict_price():
         'Equipment_Name_Model E': [0]
     })
 
+    # Map selected equipment type and name to 1
     input_data['Equipment_Type_' + equipment_type] = 1
     input_data['Equipment_Name_' + equipment_name] = 1
+
+    # Make prediction
     predicted_price = model.predict(input_data)
 
-    return jsonify({'predicted_price': predicted_price[0]})
+    return predicted_price[0]
 
-if __name__ == '__main__':
-    app.run(debug=True)
