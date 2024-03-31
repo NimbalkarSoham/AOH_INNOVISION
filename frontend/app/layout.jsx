@@ -4,8 +4,6 @@ import Provider from "@/components/Provider";
 import Footer from "@/components/footer/Footer";
 import Script from 'next/script'
 
-import Header from "@/components/header/Header";
-
 export const metadata = {
   title: "AGRIFARM",
   description: "Rent Farming tools",
@@ -18,6 +16,7 @@ const RootLayout = ({ children }) => {
       <body>
         <Provider>
           <main className="app">
+            
             <Nav /> {/* Include the Nav component here */}
             
             {children}
