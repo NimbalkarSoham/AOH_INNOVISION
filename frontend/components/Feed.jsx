@@ -44,9 +44,11 @@ const Feed = () => {
 
   const filterPosts = (searchText) => {
     const searchLowerCase = searchText.toLowerCase();
-    return allPosts.filter((item) => item.name.toLowerCase().indexOf(searchLowerCase) !== -1);
+    return allPosts.filter(
+      (item) => item.name.toLowerCase().indexOf(searchLowerCase) !== -1
+    );
   };
-  
+
   const handleSearchChange = (e) => {
     clearTimeout(searchTimeout);
     setSearchText(e.target.value);
@@ -61,20 +63,26 @@ const Feed = () => {
   };
 
   return (
-    <div className="mt-16 mx-5 px-5 w-full">
-      <div className="flex justify-center"> {/* Centering the search bar */}
-        <form className="relative flex-center w-full max-w-lg px-4"> {/* Added max-w-lg for width restriction */}
+    <div id="feed" className="mt-16 mx-5 px-5 w-full">
+      <div className="flex justify-center">
+        {" "}
+        {/* Centering the search bar */}
+        <form className="relative flex-center w-full max-w-lg px-4">
+          {" "}
+          {/* Added max-w-lg for width restriction */}
           <input
             type="text"
             placeholder="Search for product"
             value={searchText}
             onChange={handleSearchChange}
             required
-            className="search_input peer w-full" 
+            className="search_input peer w-full"
           />
         </form>
       </div>
-      <div className="container mx-auto"> {/* Added container to wrap PostCardList */}
+      <div className="container mx-auto">
+        {" "}
+        {/* Added container to wrap PostCardList */}
         {searchText ? (
           <PostCardList allPosts={searchedResults} />
         ) : (

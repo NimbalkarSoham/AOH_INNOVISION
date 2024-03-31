@@ -62,6 +62,9 @@ const Nav = () => {
             <Link href="/Support" className="nav-link">
               <button className=" nav-button">HELP</button>
             </Link>
+            <Link href="/tool-predictor" className="nav-link">
+              <button className=" nav-button">Tool Prediction</button>
+            </Link>
             <MultilingualSelector />
             <button
               type="button"

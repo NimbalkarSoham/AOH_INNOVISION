@@ -22,7 +22,10 @@ def get_predicted_price():
 
 @app.route('/toolpredict', methods=['POST'])
 def predict():
-    return predict_tools()
+    print("route called")
+    data = request.json
+    predicted_equipment = predict_tools(data)
+    return predicted_equipment
 
 if __name__ == '__main__':
     app.run(debug=True)
