@@ -7,7 +7,7 @@ const Form = ({
   submitting,
   handleSubmit,
   handleImageChange,
-  handleOwnershipDocChange
+  handleOwnershipDocChange,
 }) => {
   const handleGoBack = () => {
     window.history.back();
@@ -108,11 +108,12 @@ const Form = ({
             <input
               value={post.type}
               onChange={(e) => setPost({ ...post, type: e.target.value })}
-              placeholder="Product location"
+              placeholder="Product type"
               required
               className="form_input mt-2 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
             />
           </label>
+
           <label className="mb-4">
             <span className="font-satoshi font-semibold text-base text-gray-700">
               Location
