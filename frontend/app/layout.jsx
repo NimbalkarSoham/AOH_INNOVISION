@@ -1,10 +1,8 @@
 import "@/styles/globals.css";
-
 import Nav from "@/components/Nav";
 import Provider from "@/components/Provider";
 import Footer from "@/components/footer/Footer";
 import Script from 'next/script'
-
 
 export const metadata = {
   title: "AGRIFARM",
@@ -18,7 +16,9 @@ const RootLayout = ({ children }) => {
       <body>
         <Provider>
           <main className="app">
-            <Nav />
+            
+            <Nav /> {/* Include the Nav component here */}
+            
             {children}
             <br />
             <br />

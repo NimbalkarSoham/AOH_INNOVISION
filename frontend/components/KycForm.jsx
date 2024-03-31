@@ -1,21 +1,18 @@
-import { useEffect, useState } from "react";
-import {
-  getAuth,
-  RecaptchaVerifier,
-  signInWithPhoneNumber,
-} from "firebase/auth";
-import { useSession } from "next-auth/react";
-import Image from "next/image";
-import { app } from "../app/config";
+import { useEffect, useState } from 'react';
+import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
+import { useSession } from 'next-auth/react';
+import { app } from '../app/config';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhone, faMapMarkerAlt, faIdCard } from '@fortawesome/free-solid-svg-icons';
 
 const KycForm = () => {
   const auth = getAuth(app);
   const { data: session } = useSession();
   const [formInputs, setFormInputs] = useState({
-    contact: "",
-    address: "",
-    aadharNo: 0,
-    aadharImage: "",
+    contact: '',
+    address: '',
+    aadharNo: '',
+    aadharImage: ''
   });
   const [otp, setOtp] = useState("");
   const [confirmationResult, setConfirmationResult] = useState(null);
@@ -131,76 +128,45 @@ const KycForm = () => {
 
   return (
     <section className="flex flex-col items-center mt-8">
-      <div className="form-container w-full max-w-md bg-green-100   rounded-lg shadow-lg p-6 space-y-4">
+      <div className="form-container w-full max-w-md bg-green-100 rounded-lg shadow-lg p-6 space-y-4">
         <h1 className="text-2xl font-bold text-center">Account Setup Form</h1>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div id="recaptcha-container"></div>
           <div className="flex flex-col">
-            <label htmlFor="phone-no" className="font-medium">
+            <label htmlFor="phone-no" className="font-medium flex items-center">
+              <FontAwesomeIcon icon={faPhone} className="mr-2" />
               Contact No:
             </label>
-            <input
-              type="tel"
-              name="phone"
-              id="phone-no"
-              className="input-field"
-              onChange={(e) =>
-                setFormInputs({ ...formInputs, contact: e.target.value })
-              }
-            />
+            <input type="tel" name="phone" id="phone-no" className="input-field" onChange={(e) => setFormInputs({ ...formInputs, contact: e.target.value })} />
           </div>
           <div className="flex flex-col">
-            <label htmlFor="address" className="font-medium">
-              pincode:
+            <label htmlFor="address" className="font-medium flex items-center">
+              <FontAwesomeIcon icon={faMapMarkerAlt} className="mr-2" />
+              Address:
             </label>
-            <input
-              type="text"
-              name="address"
-              id="address"
-              className="input-field"
-              onChange={(e) =>
-                setFormInputs({ ...formInputs, address: e.target.value })
-              }
-            />
+            <input type="text" name="address" id="address" className="input-field" onChange={(e) => setFormInputs({ ...formInputs, address: e.target.value })} />
           </div>
           <div className="flex flex-col">
-            <label htmlFor="aadhar" className="font-medium">
+            <label htmlFor="aadhar" className="font-medium flex items-center">
+              <FontAwesomeIcon icon={faIdCard} className="mr-2" />
               Aadhar card:
             </label>
-            <input
-              type="file"
-              name="file"
-              id="aadhar"
-              className="input-field"
-              onChange={handleImageChange}
-            />
+            <input type="file" name="file" id="aadhar" className="input-field" onChange={handleImageChange} />
           </div>
           <div className="flex flex-col">
-            <label htmlFor="aadharNo" className="font-medium">
+            <label htmlFor="aadharNo" className="font-medium flex items-center">
+              <FontAwesomeIcon icon={faIdCard} className="mr-2" />
               Aadhar No:
             </label>
-            <input
-              type="number"
-              name="aadharNo"
-              id="aadharNo"
-              className="input-field"
-              onChange={(e) =>
-                setFormInputs({ ...formInputs, aadharNo: e.target.value })
-              }
-            />
+            <input type="number" name="aadharNo" id="aadharNo" className="input-field" onChange={(e) => setFormInputs({ ...formInputs, aadharNo: e.target.value })} />
           </div>
-
-          <button type="submit" className="btn-primary">
-            Submit
-          </button>
-          <button type="reset" className="btn-secondary">
-            Reset
-          </button>
+          <div className="space-x-4">
+            <button type="submit" className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+            <button type="reset" className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Reset</button>
+          </div>
         </form>
         <form className="space-y-4" onSubmit={sendOtp}>
-          <button type="submit" className="btn-primary">
-            Generate OTP
-          </button>
+          <button type="submit" className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Generate OTP</button>
           <div className="flex flex-col">
             <label htmlFor="otp" className="font-medium">
               OTP:
