@@ -107,8 +107,8 @@ const myOrders = ({ params }) => {
   return (
     <div className="flex flex-col items-center">
       <div className="content flex flex-col gap-3 items-start">
-        <div className="head">
-          <h1>My Orders</h1>
+        <div className="head bg-[#6bb748] text-white py-3 px-6 rounded-lg">
+          <h1 className="text-xl font-semibold">My Orders</h1>
         </div>
         <div id="recaptcha-container"></div>
         <div className="list flex flex-col gap-4">

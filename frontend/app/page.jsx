@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Feed from "@/components/Feed";
 import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
@@ -11,8 +11,8 @@ import Workflow from "@/components/home/workflow/Workflow";
 import Services from "@/components/home/services/Services";
 import Stats from "@/components/home/stats/Stats";
 import Equipments from "@/components/home/equipments/Equipments";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LandingPage = () => {
   const { data: session } = useSession();
@@ -38,7 +38,9 @@ const LandingPage = () => {
   }
 
   if (userData.isVerified === "under-verification") {
-    toast.error("Note: Your account is under verification. Please wait until your account is verified by the Admin");
+    toast.error(
+      "Note: Your account is under verification. Please wait until your account is verified by the Admin"
+    );
   }
 
   return (
@@ -48,9 +50,9 @@ const LandingPage = () => {
         <Banner />
         <Support />
         <Workflow />
-        
-          <Feed />
-        
+
+        <Feed />
+
         <Services />
         <Equipments />
       </div>
