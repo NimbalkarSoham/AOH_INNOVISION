@@ -14,9 +14,10 @@ const productSchema = new Schema({
         type: String,
         default: ''
     },
-    images: [{
-        type: String
-    }],
+    ownershipDoc: {
+        type: String,  
+        default: ''
+    },
     brand: {
         type: String,
         default: ''
@@ -52,6 +53,14 @@ const productSchema = new Schema({
     contact: {
         type: String,
         default: ""
+    },
+    model:{
+        type:String,
+        default:""
+    },
+    type:{
+        type:String,
+        default:""
     }
 });
 
