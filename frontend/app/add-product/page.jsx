@@ -19,7 +19,6 @@ const CreateProduct = () => {
     ownershipDoc:"",
     type:"",
     model:"",
-    age:""
   });
   const fetchUser = async () => {
     const response = await fetch(`/api/users/${session?.user.id}/`);
