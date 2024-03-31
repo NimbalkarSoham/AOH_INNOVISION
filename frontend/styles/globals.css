@@ -157,6 +157,9 @@ button {
 .green1 {
   background-image: linear-gradient(to right, #48b760, #6bb748);
 }
+.gray1 {
+  background-image: linear-gradient(to right, #383838, #636363);
+}
 .text-green1 {
   color: linear-gradient(to right, #48b760, #6bb748);
 }
@@ -198,7 +201,9 @@ button {
 .outline_btn {
   @apply rounded-full w-28 h-12 green1 py-1.5 px-5 text-white transition-all hover:bg-white font-bold font-sans text-center text-sm flex items-center justify-center;
 }
-
+.outline2_btn {
+  @apply rounded-full w-28 h-12 gray1 py-1.5 px-5 text-white transition-all hover:bg-white font-bold font-sans text-center text-sm flex items-center justify-center;
+}
 .form_input {
 }
 

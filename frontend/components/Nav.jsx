@@ -76,9 +76,9 @@ const Nav = () => {
           <>
             {providers &&
               Object.values(providers).map((provider) => (
-                <div>
+                <div className="hidden sm:flex gap-6 items-center">
                   <Link href="/Support" className="nav-link">
-                    <button className=" nav-button">HELP</button>
+                    <button className=" outline2_btn nav-button">HELP</button>
                   </Link>
                   <button
                     type="button"

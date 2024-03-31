@@ -48,9 +48,9 @@ const LandingPage = () => {
         <Banner />
         <Support />
         <Workflow />
-        <div id="feed" className="flex justify-center w-full">
+        
           <Feed />
-        </div>
+        
         <Services />
         <Equipments />
       </div>

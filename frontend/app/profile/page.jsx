@@ -24,7 +24,7 @@ const MyProfile = () => {
     <>
       <ProfileFeed
         name={session?.user.name}
-        desc="welcome to your personalized Profile page"
+        desc="Profile"
         data={posts}
         handleEdit={handleEdit}
         handleDelete={handleDelete}
