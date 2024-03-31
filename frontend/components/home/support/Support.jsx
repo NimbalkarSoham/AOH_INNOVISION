@@ -9,7 +9,7 @@ import Image from "next/image";
 const Support = () => {
   return (
     <div className="h-2/5 p-12">
-      <h1 className="text-2xl font-semibold uppercase text-center">
+      <h1 className="text-2xl font-bold uppercase text-center">
         What we offer
       </h1>
       {/* <p className="text-lg text-center mb-[100px] mt-3 opacity-90">

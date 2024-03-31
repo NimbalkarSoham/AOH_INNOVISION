@@ -16,6 +16,10 @@ const CreateProduct = () => {
     description: "",
     price: 0,
     image: "",
+    ownershipDoc:"",
+    type:"",
+    model:"",
+    age:""
   });
   const fetchUser = async () => {
     const response = await fetch(`/api/users/${session?.user.id}/`);
@@ -48,10 +52,30 @@ const CreateProduct = () => {
       setPost({ ...post, image: result });
     };
   };
-
+  const handleOwnershipDocChange = (e) => {
+    const file = e.target.files[0];
+  
+    if (!file) return;
+  
+    if (!file.type.includes("image")) {
+      return alert("Please upload an image file");
+    }
+  
+    const reader = new FileReader();
+  
+    reader.readAsDataURL(file);
+  
+    reader.onload = () => {
+      const result = reader.result;
+  
+      setPost({ ...post, ownershipDoc: result }); // Change image to ownershipDoc
+    };
+  };
+  
   const createProduct = async (e) => {
-    debugger;
     e.preventDefault();
+
+    debugger;
 
     setSubmitting(true);
     const form = e.currentTarget;
@@ -85,7 +109,11 @@ const CreateProduct = () => {
           description: post.description,
           price: post.price,
           image: data.secure_url,
+          ownershipDoc:data.secure_url,
           location: post.location,
+          type:post.type,
+          model:post.model,
+          age:post.age,
         }),
       });
 
@@ -109,6 +137,7 @@ const CreateProduct = () => {
           submitting={submitting}
           handleSubmit={createProduct}
           handleImageChange={handleImageChange}
+          handleOwnershipDocChange={handleOwnershipDocChange}
         />
       ) : (
         <h4>account is under verification!</h4>

@@ -11,10 +11,9 @@ const Profile = ({ params }) => {
   const [profile, setProfile] = useState(null);
   const [posts, setPosts] = useState(null);
   const router = useRouter();
+
   useEffect(() => {
     const fetchProfile = async () => {
-      debugger;
-
       const postReq = await fetch(`/api/users/${params.id}/posts`, {
         method: "GET",
       });
@@ -37,24 +36,25 @@ const Profile = ({ params }) => {
       router.push("/");
     }
   };
-  const handleDelete = () => {};
-  const handleEdit = () => {};
+
+  const handleDelete = () => { };
+  const handleEdit = () => { };
 
   return (
     <div className="flex flex-col items-center">
       {profile && (
-        // TODO: Now display all data using the posts and profile hooks.
-        <div className="profilecard flex flex-col items-center gap-7">
+        <div className="profilecard flex flex-col items-center gap-7 bg-gray-200 rounded-md p-6">
           <p className="desc text-left text-4xl font-bold">
-            Welcome to your personalized Profile page
+            Profile
           </p>
-          <div className="flex flex-row gap-10 bg-slate-300 rounded-md p-6">
+          <div className="flex flex-row gap-10">
             <div className="img">
               <Image
                 src={profile.AadharCard}
                 width={300}
                 height={300}
                 alt="img"
+                className="rounded-md"
               />
             </div>
             <div className="details flex flex-col gap-2">
@@ -90,10 +90,11 @@ const Profile = ({ params }) => {
               ) : (
                 <>
                   {profile?.isVerified == "verified" &&
-                  profile.email == session?.user.email ? (
-                    <Link href={"/add-product"} className="outline_btn mx-12 ">
+                    profile.email == session?.user.email ? (
+                    <Link href={"/add-product"} className="outline2_btn mx-0 lg:mx-12 text-left">
                       Add Product
                     </Link>
+
                   ) : (
                     <></>
                   )}

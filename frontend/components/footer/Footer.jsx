@@ -26,7 +26,7 @@ const Footer = () => {
               />
               <div className="ml-4">
                 <h3 className="text-2xl text-white font-bold mt-4">
-                  Krishi <br /> Sadhan
+                  AGRI <br /> FARM
                 </h3>
                 <p className="text-md font-normal text-white mt-2">
                   Kisaan upkaran ka ek Matra Sadhan.
@@ -63,10 +63,10 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <p className="text-md text-medium text-white mt-4">
+          {/* <p className="text-md text-medium text-white mt-4">
             Please provide us Feedback{" "}
             <button className="text-xl underline">HERE</button>
-          </p>
+          </p> */}
         </div>
         <div className="flex-1 px-16 border-r-2 border-black-600">
           <h1 className="text-xl ml-6 text-white font-bold w-2/3">

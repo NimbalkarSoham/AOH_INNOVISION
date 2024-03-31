@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect } from "react";
 import Card from "./Card";
 import { useState } from "react";
@@ -7,7 +6,7 @@ import { useSession } from "next-auth/react";
 const PostCardList = ({ allPosts }) => {
   const { data: session } = useSession();
   return (
-    <div className="mt-16 prompt_layout">
+    <div className="mt-12 prompt_layout">
       {allPosts.map((post) => {
         if (post.creator != session?.user.id && post.status == "verified") {
           return (
@@ -43,10 +42,11 @@ const Feed = () => {
     fetchPost();
   }, []);
 
-  const filterPosts = (searchtext) => {
-    const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
-    return allPosts.filter((item) => regex.test(item.name));
+  const filterPosts = (searchText) => {
+    const searchLowerCase = searchText.toLowerCase();
+    return allPosts.filter((item) => item.name.toLowerCase().indexOf(searchLowerCase) !== -1);
   };
+  
   const handleSearchChange = (e) => {
     clearTimeout(searchTimeout);
     setSearchText(e.target.value);
@@ -62,21 +62,25 @@ const Feed = () => {
 
   return (
     <div className="mt-16 mx-5 px-5 w-full">
-      <form className="relative w-full flex-center">
-        <input
-          type="text"
-          placeholder="Search for product"
-          value={searchText}
-          onChange={handleSearchChange}
-          required
-          className="search_input peer"
-        />
-      </form>
-      {searchText ? (
-        <PostCardList allPosts={searchedResults} />
-      ) : (
-        <PostCardList allPosts={allPosts} />
-      )}
+      <div className="flex justify-center"> {/* Centering the search bar */}
+        <form className="relative flex-center w-full max-w-lg px-4"> {/* Added max-w-lg for width restriction */}
+          <input
+            type="text"
+            placeholder="Search for product"
+            value={searchText}
+            onChange={handleSearchChange}
+            required
+            className="search_input peer w-full" 
+          />
+        </form>
+      </div>
+      <div className="container mx-auto"> {/* Added container to wrap PostCardList */}
+        {searchText ? (
+          <PostCardList allPosts={searchedResults} />
+        ) : (
+          <PostCardList allPosts={allPosts} />
+        )}
+      </div>
     </div>
   );
 };
