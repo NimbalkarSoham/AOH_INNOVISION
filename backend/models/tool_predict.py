@@ -12,9 +12,9 @@ with open(pickle_file_path, 'rb') as model_file:
 
 def predict_tools(data):
     # Get data from request
-    activity = data['Activity']
-    duration = data['Duration']
-    budget = data['Budget']
+    activity = data.get('Activity', '')
+    budget = int(data.get('Budget', 0))
+    duration = int(data.get('Duration', 0))
     
 
     # Prepare input data for prediction
