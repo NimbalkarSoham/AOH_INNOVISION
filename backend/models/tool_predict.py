@@ -10,12 +10,12 @@ pickle_file_path = os.path.join(models_folder, 'pipeline_tool_model.pkl')
 with open(pickle_file_path, 'rb') as model_file:
     pipeline_model = pickle.load(model_file)
 
-def predict_tools():
+def predict_tools(data):
     # Get data from request
-    data = request.json
     activity = data['Activity']
     duration = data['Duration']
     budget = data['Budget']
+    
 
     # Prepare input data for prediction
     input_data = pd.DataFrame({'Activity': [activity], 'Duration (days)': [duration], 'Budget (USD)': [budget]})
