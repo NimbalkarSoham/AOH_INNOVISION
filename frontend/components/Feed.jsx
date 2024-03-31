@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect } from "react";
 import Card from "./Card";
 import { useState } from "react";
@@ -14,8 +13,8 @@ const PostCardList = ({ allPosts }) => {
             <Card
               key={post._id}
               post={post}
-              handleEdit={() => {}}
-              handleDelete={() => {}}
+              handleEdit={() => { }}
+              handleDelete={() => { }}
             />
           );
         }
@@ -43,10 +42,19 @@ const Feed = () => {
     fetchPost();
   }, []);
 
-  const filterPosts = (searchtext) => {
-    const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
-    return allPosts.filter((item) => regex.test(item.name));
+  const filterPosts = (searchText) => {
+
+    const searchTextLower = searchText.toLowerCase();
+
+
+    return allPosts.filter((post) => {
+
+      const nameLower = post.name.toLowerCase();
+
+      return nameLower.includes(searchTextLower);
+    });
   };
+
   const handleSearchChange = (e) => {
     clearTimeout(searchTimeout);
     setSearchText(e.target.value);
@@ -61,8 +69,8 @@ const Feed = () => {
   };
 
   return (
-    <div className="mt-16 mx-5 px-5 w-full">
-      <form className="relative w-full flex-center">
+    <div className="mt-16 mx-auto px-5 w-full max-w-md"> {/* Adjusted the styles here */}
+      <form className="relative w-full flex-center justify-center">
         <input
           type="text"
           placeholder="Search for product"

@@ -28,8 +28,7 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.22.3",
     "react-sticky-el": "^2.1.0",
-    "shortid": "^2.2.16"
-    "react-sticky-el": "^2.1.0",
+    "shortid": "^2.2.16",
     "react-toastify": "^10.0.5"
   },
   "devDependencies": {

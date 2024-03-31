@@ -22,16 +22,16 @@ const Banner = () => {
                 interval={3000}
             >
                 <div className="relative">
-                    <div className="absolute w-full h-full bg-gradient-to-r from-white-600/10 to-white-600/10 bottom-0  z-20" />
+                    <div className="absolute w-full h-full bg-gradient-to-r from-white-900/10 to-white-900/10 bottom-0  z-10" />
                     
-                    <Image src={home1} className="home1Img" width={1000} height={1000}/>
+                    <Image src={home1} className="home1Img rounded-lg" width={1000} height={1000}/>
                     <div>
                         <div className="flex flex-col justify-center -mt-10 wrapper">
                             <p className="text-2xl font-normal text-black">
-                                Namaste, welcome to Krishi Sadhan.
+                                Namaste, welcome to AGRI FARM.
                             </p>
                             <h1 className="text-4xl font-bold text-black">
-                                <span className="text-[#219653]">Farmer’s Eqipments</span> at
+                                <span className="text-[#219653]">Farmer’s Equipments</span> at
                                 reasonable <br /> and affordable prices.
                             </h1>
                             <p className="text-lg font-normal mt-2 mb-4 text-black">

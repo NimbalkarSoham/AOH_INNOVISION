@@ -44,12 +44,15 @@ const Nav = () => {
             <Link href="/#feed" className="nav-link">
               <button className=" nav-button">PRODUCTS</button>
             </Link>
-            
+
             <Link href="/scheme" className="nav-link">
               <button className=" nav-button">SCHEMES</button>
             </Link>
             <Link href={`/my-orders/${session?.user.id}`} className="nav-link">
               <button className=" nav-button">MY ORDERS</button>
+            </Link>
+            <Link href="/Support" className="nav-link">
+              <button className=" nav-button">HELP</button>
             </Link>
             <MultilingualSelector />
             <button
@@ -73,14 +76,20 @@ const Nav = () => {
           <>
             {providers &&
               Object.values(providers).map((provider) => (
-                <button
-                  type="button"
-                  key={provider.name}
-                  onClick={() => signIn(provider.id)}
-                  className=" outline_btn text-sm text-gray-600 hover:text-black focus:outline-none"
-                >
-                  Sign In
-                </button>
+                <div>
+                  <Link href="/Support" className="nav-link">
+                    <button className=" nav-button">HELP</button>
+                  </Link>
+                  <button
+                    type="button"
+                    key={provider.name}
+                    onClick={() => signIn(provider.id)}
+                    className=" outline_btn text-sm text-gray-600 hover:text-black focus:outline-none"
+                  >
+                    Sign In
+                  </button>
+                </div>
+
               ))}
           </>
         )}

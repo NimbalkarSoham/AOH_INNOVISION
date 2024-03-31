@@ -13,19 +13,19 @@ const schemesData = [
     name: "Agriculture Mechanization Scheme",
     description: "Promotes adoption of modern agricultural machinery to improve efficiency and productivity.",
     portalLink: "https://shasanyojana.com/maharashtra-krushi-yantrikikaran-yojana/",
-    image: "/img/farm.jpg"
+    image: "/img/farm2.jpg"
   },
   {
     name: "Polyhouse Subsidy Scheme",
     description: "Offers financial assistance to farmers for setting up polyhouses, enabling controlled cultivation and higher yields.",
     portalLink: "https://krishi.maharashtra.gov.in/",
-    image: "/img/farm.jpg"
+    image: "/img/images.jfif"
   },
   {
     name: "PM Pranam Scheme",
     description: "Provides financial support to physically challenged farmers for agricultural activities and livelihood improvement.",
     portalLink: "https://sjsa.maharashtra.gov.in/en",
-    image: "/img/farm.jpg"
+    image: "/img/farm2.jpg"
   },
   {
     name: "Namo Shetkari Maha Samman Nidhi Yojana",
@@ -37,7 +37,7 @@ const schemesData = [
     name: "National Agricultural Development Scheme",
     description: "Aims to improve agricultural infrastructure, technology adoption, and market access for sustainable development.",
     portalLink: "http://www.agricoop.nic.in/",
-    image: "/img/farm.jpg"
+    image: "/img/farm3.avif"
   },
   {
     name: "Magel Tyala Shet tale Shetkari Yojana",
