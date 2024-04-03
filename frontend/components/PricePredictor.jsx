@@ -39,9 +39,9 @@ const RentalPricePredictor = ({ product, order }) => {
 
   return (
     <div className="max-w-md mx-auto my-8 p-4 bg-gray-100 rounded-lg shadow-md">
-      <h1 className="text-2xl font-bold mb-4">Rental Price Prediction</h1>
+      <h1 className="text-2xl font-bold mb-4">Rental Price Calculation</h1>
       <p className="mb-4">
-        Enter the details of the machine to predict the rental price.
+        Enter the details of the machine to calculate the rental price.
       </p>
 
       <div className="mb-4">
@@ -133,13 +133,13 @@ const RentalPricePredictor = ({ product, order }) => {
         onClick={predictPrice}
         className="bg-[#6FB74C] text-white font-bold py-2 px-4 rounded"
       >
-        Predict
+        Calculate
       </button>
 
       {predictedPrice !== null && (
         <>
           <p className="mt-4">
-            The predicted rental price is: ${predictedPrice?.toFixed(2)}
+            The calculated rental price is: ${predictedPrice?.toFixed(2)}
           </p>
           <ResolveOrder
             product={product}

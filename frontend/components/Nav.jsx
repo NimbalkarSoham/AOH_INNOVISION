@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -39,7 +39,6 @@ const Nav = () => {
               <button className="outline_btn text-gray-700 focus:outline-none">
                 HOME
               </button>
-
             </Link>
             <Link href="/#feed" className="nav-link">
               <button className=" nav-button">PRODUCTS</button>
@@ -55,7 +54,10 @@ const Nav = () => {
               <button className=" nav-button">HELP</button>
             </Link>
             <Link href="/tool-predictor" className="nav-link">
-              <button className=" nav-button">Tool Prediction</button>
+              <button className=" nav-button">TOOL RECOMMENDATION</button>
+            </Link>
+            <Link href="/disease-prediction" className="nav-link">
+              <button className=" nav-button">DISEASE CLASSIFICATION</button>
             </Link>
             <MultilingualSelector />
             <button
@@ -92,7 +94,6 @@ const Nav = () => {
                     Sign In
                   </button>
                 </div>
-
               ))}
           </>
         )}

@@ -2,11 +2,10 @@
 
 /* styles.css */
 .bg-farm-image {
-  background-image: url('/img/farm.jpg');
+  background-image: url("/img/farm.jpg");
   background-size: cover;
   background-position: center;
 }
-
 
 .product-card {
   margin: auto;
@@ -241,7 +240,7 @@ button {
 /* FEED */
 
 .prompt_layout {
-  @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-4 xl:gap-16;
+  @apply space-y-6 py-8 sm:grid sm:grid-cols-2 sm:gap-6 xl:grid-cols-4 xl:gap-12;
 }
 
 .product-image {

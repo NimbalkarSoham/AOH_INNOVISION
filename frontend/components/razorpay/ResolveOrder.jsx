@@ -4,10 +4,12 @@ import Buy from "./Buy";
 import { useRouter } from "next/navigation";
 import Loading from "@/components/Loading";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 const ResolveOrder = ({ product, orderData, predictedPrice }) => {
   const router = useRouter();
   const { data: session } = useSession();
+  const [submitting, setSubmitting] = useState(false);
 
   const makePayment = async ({ productId = null }) => {
     // "use server"
@@ -37,6 +39,7 @@ const ResolveOrder = ({ product, orderData, predictedPrice }) => {
       handler: async function (response) {
         // if (response.length==0) return <Loading/>;
         console.log(response);
+        setSubmitting(true);
 
         const data = await fetch("http://localhost:3000/api/paymentverify", {
           method: "POST",
@@ -78,6 +81,7 @@ const ResolveOrder = ({ product, orderData, predictedPrice }) => {
           } catch (error) {
             console.log(error);
           }
+          setSubmitting(false);
 
           console.log("redirected.......");
           router.push("/");
@@ -102,6 +106,13 @@ const ResolveOrder = ({ product, orderData, predictedPrice }) => {
       alert("Payment failed. Please try again. Contact support for help");
     });
   };
+
+  if (submitting)
+    return (
+      <>
+        <Image src={"/spinner.gif"} />
+      </>
+    );
 
   return (
     <>

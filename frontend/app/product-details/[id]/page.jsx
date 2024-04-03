@@ -16,8 +16,6 @@ const page = ({ params }) => {
   const [Owner, setOwner] = useState(null);
   const [address, setAddress] = useState(null);
 
-  
-
   useEffect(() => {
     const fetchOrder = async () => {
       //debugger;
@@ -51,7 +49,7 @@ const page = ({ params }) => {
     debugger;
     try {
       console.log(params.id);
-      const price = document.getElementById("price_string").value;
+      const price = "random";
       if (price == "") {
         alert("Enter price string YZ");
       } else {
@@ -143,12 +141,7 @@ const page = ({ params }) => {
                 <strong>Contact:</strong> {myOrder.contact || ""}
               </li>
               {session?.user.email == "2021.soham.nimbalkar@ves.ac.in" ? (
-                <>
-                  <li>
-                    <strong>Enter price-string:</strong>
-                  </li>
-                  <input type="text" name="price_string" id="price_string" />
-                </>
+                <></>
               ) : (
                 <>
                   <li>
@@ -174,7 +167,7 @@ const page = ({ params }) => {
                 Verify
               </button>
             ) : (
-              <BuyProduct product_id={params.id} shipping_address={address}/>
+              <BuyProduct product_id={params.id} shipping_address={address} />
             )}
           </div>
         </div>
