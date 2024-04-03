@@ -1,7 +1,7 @@
 "use client";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import MultilingualSelector from "./MultilingualSelector";
 
@@ -18,6 +18,13 @@ const Nav = () => {
 
     setUpProviders();
   }, []);
+
+  const handleScrollToFeed = () => {
+    const feedSection = document.getElementById("feed");
+    if (feedSection) {
+      feedSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <nav className="flex items-center justify-between w-full mb-4 pt-3 px-4 bg-white">
@@ -40,8 +47,10 @@ const Nav = () => {
                 HOME
               </button>
             </Link>
-            <Link href="/#feed" className="nav-link">
-              <button className=" nav-button">PRODUCTS</button>
+            <Link href="/#feed" passHref>
+              <button className=" nav-button" onClick={handleScrollToFeed}>
+                PRODUCTS
+              </button>
             </Link>
 
             <Link href="/scheme" className="nav-link">
@@ -128,19 +137,16 @@ const Nav = () => {
                   HOME
                 </Link>
                 <Link
-                  href="/"
+                  href="/#feed"
                   className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100"
-                  onClick={() => setToggleDropdown(false)}
+                  onClick={() => {
+                    setToggleDropdown(false);
+                    handleScrollToFeed();
+                  }}
                 >
                   PRODUCTS
                 </Link>
-                <Link
-                  href="/"
-                  className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100"
-                  onClick={() => setToggleDropdown(false)}
-                >
-                  WEATHER
-                </Link>
+
                 <Link
                   href="/"
                   className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100"

@@ -11,6 +11,7 @@ with open(pickle_file_path, 'rb') as model_file:
     pipeline_model = pickle.load(model_file)
 
 def predict_tools(data):
+def predict_tools(data):
     # Get data from request
     data = request.json
     activity = data.get('Activity','')
