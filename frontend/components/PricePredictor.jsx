@@ -135,12 +135,43 @@ const RentalPricePredictor = ({ product, order }) => {
       >
         Calculate
       </button>
+      <form>
+          <label className="mb-4">
+            <span className="font-satoshi font-semibold text-base text-gray-700">
+              Product Review
+            </span>
+            <textarea
+              // value={post.description}
+              // onChange={(e) =>
+              //   setPost({ ...post, description: e.target.value })
+              // }
+              placeholder="Write your product info here.."
+              required
+              className="form_textarea mt-2 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            />
+          </label>
+          <button
+              type="submit"
+              className="px-5 py-2 text-base rounded-md 
+                
+                  bg-green-600 hover:bg-green-700 text-white"
+            
+            >
+              Submit Response
+            </button>
+          </form>
 
       {predictedPrice !== null && (
         <>
           <p className="mt-4">
             The calculated rental price is: ${predictedPrice?.toFixed(2)}
           </p>
+          {/* 1. Form for user reviews
+              2. review will be sent to backend.
+              3. Sentiment analysis on review.
+              4. rating will be returned.
+              5. rating will be stored in product schema */}
+          
           <ResolveOrder
             product={product}
             orderData={orderData}

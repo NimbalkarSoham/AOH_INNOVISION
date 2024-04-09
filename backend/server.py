@@ -4,7 +4,7 @@ import pandas as pd
 import pickle
 from models.price_prediction import predict_price
 from flask_cors import CORS
-from models.tool_predict import predict_tools
+# from models.tool_predict import predict_tools
 from models.model import predict_image
 from models.utils import disease_dic
 
