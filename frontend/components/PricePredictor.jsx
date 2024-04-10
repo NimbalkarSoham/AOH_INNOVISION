@@ -36,7 +36,30 @@ const RentalPricePredictor = ({ product, order }) => {
       console.log(error);
     }
   };
+  const [review, setReview] = useState('');
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(`http://localhost:3000/api/product/${order.product._id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ reviewText: review }),
+      });
+
+      if (response.ok) {
+        console.log('Review added successfully');
+        // Optionally, you can update the UI to show that the review was added
+      } else {
+        console.error('Failed to add review');
+      }
+    } catch (error) {
+      console.error('Error adding review:', error);
+    }
+  };
   return (
     <div className="max-w-md mx-auto my-8 p-4 bg-gray-100 rounded-lg shadow-md">
       <h1 className="text-2xl font-bold mb-4">Rental Price Calculation</h1>
@@ -135,31 +158,26 @@ const RentalPricePredictor = ({ product, order }) => {
       >
         Calculate
       </button>
-      <form>
-          <label className="mb-4">
-            <span className="font-satoshi font-semibold text-base text-gray-700">
-              Product Review
-            </span>
-            <textarea
-              // value={post.description}
-              // onChange={(e) =>
-              //   setPost({ ...post, description: e.target.value })
-              // }
-              placeholder="Write your product info here.."
-              required
-              className="form_textarea mt-2 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-            />
-          </label>
-          <button
-              type="submit"
-              className="px-5 py-2 text-base rounded-md 
-                
-                  bg-green-600 hover:bg-green-700 text-white"
-            
-            >
-              Submit Response
-            </button>
-          </form>
+      <form onSubmit={handleSubmit}>
+        <label className="mb-4">
+          <span className="font-satoshi font-semibold text-base text-gray-700">
+            Product Review
+          </span>
+          <textarea
+            value={review}
+            onChange={(e) => setReview(e.target.value)}
+            placeholder="Write your product review here.."
+            required
+            className="form_textarea mt-2 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+          />
+        </label>
+        <button
+          type="submit"
+          className="px-5 py-2 text-base rounded-md bg-green-600 hover:bg-green-700 text-white"
+        >
+          Submit Review
+        </button>
+      </form>
 
       {predictedPrice !== null && (
         <>
