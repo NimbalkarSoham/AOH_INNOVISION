@@ -110,7 +110,7 @@ const ResolveOrder = ({ product, orderData, predictedPrice }) => {
   if (submitting)
     return (
       <>
-        <Image src={"/spinner.gif"} />
+        <Image src={"/spinner.gif"} width={50} height={50} />
       </>
     );
 

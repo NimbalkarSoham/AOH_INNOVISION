@@ -36,29 +36,35 @@ const RentalPricePredictor = ({ product, order }) => {
       console.log(error);
     }
   };
-  const [review, setReview] = useState('');
+  const [review, setReview] = useState("");
 
   const handleSubmit = async (e) => {
-    debugger
+    debugger;
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:3000/api/product/${product._id}`, {
-        method: 'PUT',
+      const response = await fetch(`http://localhost:5000/analyse-review`, {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ type: review }),
+        body: JSON.stringify({ review: review }),
       });
 
-      if (response.ok) {
-        console.log('Review added successfully');
-        // Optionally, you can update the UI to show that the review was added
-      } else {
-        console.error('Failed to add review');
-      }
+      const res = await response.json();
+
+      const rating = res.rating;
+      console.log(rating);
+
+      const response2 = await fetch(`http://localhost:3000/api/product`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id: product._id, rating: rating }),
+      });
     } catch (error) {
-      console.error('Error adding review:', error);
+      console.error("Error adding review:", error);
     }
   };
   return (
@@ -190,7 +196,7 @@ const RentalPricePredictor = ({ product, order }) => {
               3. Sentiment analysis on review.
               4. rating will be returned.
               5. rating will be stored in product schema */}
-          
+
           <ResolveOrder
             product={product}
             orderData={orderData}

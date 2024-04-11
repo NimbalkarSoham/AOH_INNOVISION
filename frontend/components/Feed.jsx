@@ -5,20 +5,31 @@ import { useSession } from "next-auth/react";
 
 const PostCardList = ({ allPosts }) => {
   const { data: session } = useSession();
+
+  // Define a function to compare the ratings of two posts
+  const compareRatings = (postA, postB) => {
+    const ratingA = postA.product.rating || 0; // Default to 0 if rating is undefined
+    const ratingB = postB.product.rating || 0; // Default to 0 if rating is undefined
+    return ratingB - ratingA; // Sort in descending order of rating
+  };
+
+  // Sort the posts based on their ratings
+  const sortedPosts = allPosts
+    .filter(
+      (post) => post.creator !== session?.user.id && post.status === "verified"
+    )
+    .sort(compareRatings);
+
   return (
     <div className="mt-12 prompt_layout">
-      {allPosts.map((post) => {
-        if (post.creator != session?.user.id && post.status == "verified") {
-          return (
-            <Card
-              key={post._id}
-              post={post}
-              handleEdit={() => {}}
-              handleDelete={() => {}}
-            />
-          );
-        }
-      })}
+      {sortedPosts.map((post) => (
+        <Card
+          key={post._id}
+          post={post}
+          handleEdit={() => {}}
+          handleDelete={() => {}}
+        />
+      ))}
     </div>
   );
 };
