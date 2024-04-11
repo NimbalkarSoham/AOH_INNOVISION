@@ -10,6 +10,8 @@ const orderDetails = ({ params }) => {
     debugger;
     const data = await fetch(`http://localhost:3000/api/order/${params.id}`);
     const order = await data.json();
+    console.log(order);
+    console.log(data)
     setOrder(order);
 
     const productData = await fetch(
