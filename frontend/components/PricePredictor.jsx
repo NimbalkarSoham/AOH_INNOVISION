@@ -39,15 +39,16 @@ const RentalPricePredictor = ({ product, order }) => {
   const [review, setReview] = useState('');
 
   const handleSubmit = async (e) => {
+    debugger
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:3000/api/product/${order.product._id}`, {
-        method: 'POST',
+      const response = await fetch(`http://localhost:3000/api/product/${product._id}`, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ reviewText: review }),
+        body: JSON.stringify({ type: review }),
       });
 
       if (response.ok) {
