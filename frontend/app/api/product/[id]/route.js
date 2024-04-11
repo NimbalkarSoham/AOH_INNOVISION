@@ -13,6 +13,8 @@ export const GET = async (request, { params }) => {
     return new Response("Internal Server Error", { status: 500 });
   }
 };
+
+
 export const PUT = async (request, { params }) => {
   const { status } = await request.json();
 
@@ -63,3 +65,5 @@ export const DELETE = async (request, { params }) => {
     return new Response("Prompt could not be deleted", { status: 500 });
   }
 };
+
+
