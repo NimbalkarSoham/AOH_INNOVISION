@@ -14,6 +14,7 @@ const page = ({ params }) => {
 
   const [myOrder, setMyOrder] = useState([]);
   const [Owner, setOwner] = useState(null);
+  const[ownerDetail, setOwnerDetails] = useState([]);
   const [address, setAddress] = useState(null);
 
   useEffect(() => {
@@ -30,6 +31,7 @@ const page = ({ params }) => {
       });
 
       const owner = await ownerReq.json();
+      setOwnerDetails(owner);
 
       setOwner(owner.name);
       console.log(owner);
@@ -138,9 +140,9 @@ const page = ({ params }) => {
                 <strong>Location:</strong> {myOrder.location || ""}
               </li>
               <li>
-                <strong>Contact:</strong> {myOrder.contact || ""}
+                <strong>Contact:</strong> {ownerDetail.phone || ""}
               </li>
-              {session?.user.email == "2021.soham.nimbalkar@ves.ac.in" ? (
+              {session?.user.email == "2021.anket.kadam@ves.ac.in" ? (
                 <></>
               ) : (
                 <>
@@ -158,7 +160,7 @@ const page = ({ params }) => {
             </ul>
           </div>
           <div className="product-actions">
-            {session?.user.email == "2021.soham.nimbalkar@ves.ac.in" ? (
+            {session?.user.email == "2021.anket.kadam@ves.ac.in" ? (
               <button
                 id="verify-btn"
                 onClick={handleVerification}

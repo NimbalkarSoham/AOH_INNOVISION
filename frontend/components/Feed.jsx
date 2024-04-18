@@ -7,22 +7,22 @@ const PostCardList = ({ allPosts }) => {
   const { data: session } = useSession();
 
   // Define a function to compare the ratings of two posts
-  const compareRatings = (postA, postB) => {
-    const ratingA = postA.product.rating || 0; // Default to 0 if rating is undefined
-    const ratingB = postB.product.rating || 0; // Default to 0 if rating is undefined
-    return ratingB - ratingA; // Sort in descending order of rating
-  };
+  // const compareRatings = (postA, postB) => {
+  //   const ratingA = postA.product.rating || 0; // Default to 0 if rating is undefined
+  //   const ratingB = postB.product.rating || 0; // Default to 0 if rating is undefined
+  //   return ratingB - ratingA; // Sort in descending order of rating
+  // };
 
-  // Sort the posts based on their ratings
-  const sortedPosts = allPosts
-    .filter(
-      (post) => post.creator !== session?.user.id && post.status === "verified"
-    )
-    .sort(compareRatings);
+  // // Sort the posts based on their ratings
+  // const sortedPosts = allPosts
+  //   .filter(
+  //     (post) => post.creator !== session?.user.id && post.status === "verified"
+  //   )
+  //   .sort(compareRatings);
 
   return (
     <div className="mt-12 prompt_layout">
-      {sortedPosts.map((post) => (
+      {allPosts.map((post) => (
         <Card
           key={post._id}
           post={post}
